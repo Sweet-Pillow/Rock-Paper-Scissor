@@ -32,6 +32,11 @@
             text-align: center;
         }
 
+        #Rock {
+            background: transparent;
+            width: 100%;
+            height: auto;
+        }
     </Style>
 </head>
 
@@ -53,21 +58,61 @@
 
 
     <div id="UserButtons">
-        <button type="button" id="RockP">
+        <button type="button" id="RockP" onclick="game('R')">
             Rock
         </button>
 
-        <button type="button" id="PaperP">
+        <button type="button" id="PaperP" onclick="game('P')">
             Paper
         </button>
 
-        <button type="button" id="ScissorP">
+        <button type="button" id="ScissorP" onclick="game('S')">
             Scissor
         </button>
     </div>
 
 
     <Script>
+        function game(choice) {
+            var hand = Math.floor(Math.random() * 3)
+            /*
+            0 == Rock
+            1 == Paper
+            2 == Scissor
+            */
+            switch (choice) {
+                case 'R':
+                    if (hand == 0) {
+                        alert('Draw')
+                    } else if (hand == 1) {
+                        alert('Defeat')
+                    } else if (hand == 2) {
+                        alert('Win')
+                    }
+                    break;
+
+                case 'P':
+                    if (hand == 0) {
+                        alert('Win')
+                    } else if (hand == 1) {
+                        alert('Draw')
+                    } else if (hand == 2) {
+                        alert('Defeat')
+                    }
+                    break;
+
+                case 'S':
+                    if (hand == 0) {
+                        alert('Defeat')
+                    } else if (hand == 1) {
+                        alert('Win')
+                    } else if (hand == 2) {
+                        alert('Draw')
+                    }
+                    break;
+
+            }
+        }
     </Script>
 </body>
 
