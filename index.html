@@ -6,38 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor</title>
-    <Style>
-        body {
-            background-color: cadetblue;
-            font: normal 40pt Arial;
-        }
+    <link rel="stylesheet" href="style.css">
 
-        #MachineButtons {
-            position: absolute;
-            top: 15%;
-            right: 60%;
-            width: 200px;
-            height: 70px;
-            border: 3px solid rgb(205, 243, 37);
-            text-align: center;
-        }
-
-        #UserButtons {
-            position: absolute;
-            top: 15%;
-            right: 30%;
-            width: 200px;
-            height: 70px;
-            border: 3px solid rgb(205, 243, 37);
-            text-align: center;
-        }
-
-        #Rock {
-            background: transparent;
-            width: 100%;
-            height: auto;
-        }
-    </Style>
 </head>
 
 <body>
@@ -71,49 +41,7 @@
         </button>
     </div>
 
-
-    <Script>
-        function game(choice) {
-            var hand = Math.floor(Math.random() * 3)
-            /*
-            0 == Rock
-            1 == Paper
-            2 == Scissor
-            */
-            switch (choice) {
-                case 'R':
-                    if (hand == 0) {
-                        alert('Draw')
-                    } else if (hand == 1) {
-                        alert('Defeat')
-                    } else if (hand == 2) {
-                        alert('Win')
-                    }
-                    break;
-
-                case 'P':
-                    if (hand == 0) {
-                        alert('Win')
-                    } else if (hand == 1) {
-                        alert('Draw')
-                    } else if (hand == 2) {
-                        alert('Defeat')
-                    }
-                    break;
-
-                case 'S':
-                    if (hand == 0) {
-                        alert('Defeat')
-                    } else if (hand == 1) {
-                        alert('Win')
-                    } else if (hand == 2) {
-                        alert('Draw')
-                    }
-                    break;
-
-            }
-        }
-    </Script>
+    <Script src="script_src.js"></Script>
 </body>
 
 </html>
