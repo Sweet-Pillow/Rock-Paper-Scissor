@@ -1,55 +1,75 @@
-function game(choice) {
-    var hand = Math.floor(Math.random() * 3)
-    /*
-    0 == Rock
-    1 == Paper
-    2 == Scissor
-    */
-    switch (choice) {
-        case 'R':
-            if (hand == 0) {
-                alert('Draw')
-            } else if (hand == 1) {
-                alert('Defeat')
-            } else if (hand == 2) {
-                alert('Win')
-            }
-            break;
+var updatetime
+var child
+var machineHand
+var HumanHand
+var cont
 
-        case 'P':
-            if (hand == 0) {
-                alert('Win')
-            } else if (hand == 1) {
-                alert('Draw')
-            } else if (hand == 2) {
-                alert('Defeat')
-            }
-            break;
+function run(H) {
+    HumanHand = H
+    updatetime = 0.01
+    cont = 0
+    machineHand = Math.floor(Math.random() * 3)
+    rotate()
 
-        case 'S':
-            if (hand == 0) {
-                alert('Defeat')
-            } else if (hand == 1) {
-                alert('Win')
-            } else if (hand == 2) {
-                alert('Draw')
-            }
-            break;
+}
+
+function rotate() {
+    if (updatetime >= 750) {
+        game()
+
+    } else {
+        updatetime = cont ** 2
+        cont++
+        child = document.body.querySelectorAll('#MachineButtons > button')
+        child[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
+        child[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
+        machineHand = (machineHand + 1) % 3
+        child[machineHand].style.backgroundColor = 'green'
+        setTimeout(rotate, updatetime)
 
     }
 }
 
-var updatetime = 1000
+function game() {
 
-function run() {
-    setInterval(updatetime, rotate)
-}
+    if (HumanHand == machineHand) {
+        window.alert('Empate')
+        return
+    }
 
-function rotate() {
-    if updatetime == 2000{
-        game()
+    switch (HumanHand) {
+        case 0:
+            if (machineHand == 1) {
+                window.alert('A Maquina ganhou!!')
 
-    } else{
-        
+            } else if (machineHand == 2) {
+                window.alert('Você ganhou')
+
+            }
+            break;
+
+        case 1:
+            if (machineHand == 2) {
+                window.alert('A Maquina ganhou!!')
+
+            } else if (machineHand == 0) {
+                window.alert('Você ganhou')
+
+            }
+            break;
+
+        case 2:
+            if (machineHand == 0) {
+                window.alert('A Maquina ganhou!!')
+
+            } else if (machineHand == 1) {
+                window.alert('Você ganhou')
+
+            }
+            break;
+
+        default:
+            window.alert('Se essa mensagem apareceu é pq alguma coisa deu muito errado!!!! (corra para as colinas)')
+
     }
 }
