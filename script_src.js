@@ -1,13 +1,15 @@
 var updatetime = 0.01
+var myTimeout
 var childMachine = document.body.querySelectorAll('#MachineButtons > button')
 var machineHand = Math.floor(Math.random() * 3)
-var humanMachine = document.body.querySelectorAll('#HumanButtons > button')
+var childHuman = document.body.querySelectorAll('#HumanButtons > button')
 var humanHand = 0
 var cont = 0
 
 function run(H) {
+    reset()
     humanHand = H
-    humanMachine[humanHand].style.backgroundColor = 'darkmagenta'
+    childHuman[humanHand].style.backgroundColor = 'darkmagenta'
     rotate()
 
 }
@@ -22,7 +24,7 @@ function rotate() {
         childMachine[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
         machineHand = (machineHand + 1) % 3
         childMachine[machineHand].style.backgroundColor = 'green'
-        setTimeout(rotate, updatetime)
+        myTimeout = setTimeout(rotate, updatetime)
 
     }
 }
@@ -31,7 +33,6 @@ function game() {
 
     if (humanHand == machineHand) {
         window.alert('Empate')
-        reset()
         return
     }
 
@@ -70,15 +71,15 @@ function game() {
             window.alert('Se essa mensagem apareceu é pq alguma coisa deu muito errado!!!! (corra para as colinas)')
 
     }
-    reset()
 
 }
 
 function reset() {
     console.log('reset ' + machineHand)
+    clearTimeout(myTimeout)
     updatetime = 0.01
     cont = 0
-    humanMachine[humanHand].style.backgroundColor = '#008CBA'
+    childHuman[humanHand].style.backgroundColor = '#008CBA'
     childMachine[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
     machineHand = Math.floor(Math.random() * 3)
 
