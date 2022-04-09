@@ -1,30 +1,27 @@
-var updatetime
-var child
-var machineHand
-var HumanHand
-var cont
+var updatetime = 0.01
+var childMachine = document.body.querySelectorAll('#MachineButtons > button')
+var machineHand = Math.floor(Math.random() * 3)
+var humanMachine = document.body.querySelectorAll('#HumanButtons > button')
+var humanHand = 0
+var cont = 0
 
 function run(H) {
-    HumanHand = H
-    updatetime = 0.01
-    cont = 0
-    machineHand = Math.floor(Math.random() * 3)
+    humanHand = H
+    humanMachine[humanHand].style.backgroundColor = 'darkmagenta'
     rotate()
 
 }
 
 function rotate() {
-    if (updatetime >= 750) {
+    if (updatetime >= 650) {
         game()
 
     } else {
         updatetime = cont ** 2
         cont++
-        child = document.body.querySelectorAll('#MachineButtons > button')
-        child[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
-        child[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
+        childMachine[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
         machineHand = (machineHand + 1) % 3
-        child[machineHand].style.backgroundColor = 'green'
+        childMachine[machineHand].style.backgroundColor = 'green'
         setTimeout(rotate, updatetime)
 
     }
@@ -32,12 +29,13 @@ function rotate() {
 
 function game() {
 
-    if (HumanHand == machineHand) {
+    if (humanHand == machineHand) {
         window.alert('Empate')
+        reset()
         return
     }
 
-    switch (HumanHand) {
+    switch (humanHand) {
         case 0:
             if (machineHand == 1) {
                 window.alert('A Maquina ganhou!!')
@@ -72,4 +70,16 @@ function game() {
             window.alert('Se essa mensagem apareceu é pq alguma coisa deu muito errado!!!! (corra para as colinas)')
 
     }
+    reset()
+
+}
+
+function reset() {
+    console.log('reset ' + machineHand)
+    updatetime = 0.01
+    cont = 0
+    humanMachine[humanHand].style.backgroundColor = '#008CBA'
+    childMachine[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
+    machineHand = Math.floor(Math.random() * 3)
+
 }
