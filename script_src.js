@@ -1,15 +1,15 @@
 var updatetime = 0.01
 var myTimeout
-var childMachine = document.body.querySelectorAll('#MachineButtons > button')
+var machineChild = document.body.querySelectorAll('.machineButton')
 var machineHand = Math.floor(Math.random() * 3)
-var childHuman = document.body.querySelectorAll('#HumanButtons > button')
+var humanChild = document.body.querySelectorAll('.humanButton')
 var humanHand = 0
 var cont = 0
 
 function run(H) {
     reset()
     humanHand = H
-    childHuman[humanHand].style.backgroundColor = 'darkmagenta'
+    humanChild[humanHand].style.backgroundColor = 'darkmagenta'
     rotate()
 
 }
@@ -21,9 +21,9 @@ function rotate() {
     } else {
         updatetime = cont ** 2
         cont++
-        childMachine[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
+        machineChild[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
         machineHand = (machineHand + 1) % 3
-        childMachine[machineHand].style.backgroundColor = 'green'
+        machineChild[machineHand].style.backgroundColor = 'green'
         myTimeout = setTimeout(rotate, updatetime)
 
     }
@@ -79,8 +79,8 @@ function reset() {
     clearTimeout(myTimeout)
     updatetime = 0.01
     cont = 0
-    childHuman[humanHand].style.backgroundColor = '#008CBA'
-    childMachine[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
+    humanChild[humanHand].style.backgroundColor = '#008CBA'
+    machineChild[machineHand].style.backgroundColor = 'rgb(199, 4, 43)'
     machineHand = Math.floor(Math.random() * 3)
 
 }
